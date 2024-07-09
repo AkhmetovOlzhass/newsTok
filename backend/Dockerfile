@@ -12,7 +12,7 @@ RUN npm install
 COPY . .
 
 
-RUN npm run dev
+RUN npm run build
 
 
 FROM node:18-slim
