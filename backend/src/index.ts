@@ -26,7 +26,7 @@ app.use(express.json());
 
 app.use('/api', globalRouter);
 
-parsePages();
+// parsePages();
 
 app.listen(5000, () => {
     console.log(`Server running at ${BASE_URL}`);
