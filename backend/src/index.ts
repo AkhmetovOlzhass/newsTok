@@ -2,6 +2,7 @@ import connectDB from "./db";
 import express from 'express';
 import cors from 'cors';
 import globalRouter from "./routes/global-router";
+import { parsePages } from "./scraper";
 
 connectDB();
 
@@ -24,6 +25,8 @@ app.use(cors({
 app.use(express.json());
 
 app.use('/api', globalRouter);
+
+parsePages();
 
 app.listen(5000, () => {
     console.log(`Server running at ${BASE_URL}`);
