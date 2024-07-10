@@ -30,6 +30,11 @@ app.use('/api', globalRouter);
 
 // parsePages();
 
+schedule('0 */3 * * *', () => {
+    console.log('Running the cron job every 3 hours');
+    parsePages();
+});
+
 app.listen(5000, () => {
     console.log(`Server running at ${BASE_URL}`);
 });
