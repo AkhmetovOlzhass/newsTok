@@ -1,6 +1,8 @@
 import { Video } from '../types/video';
 
-const BASE_URL = "http://localhost:5000/api/videos/all";
+// const BASE_URL = "http://localhost:5000/api/videos/all";
+
+const BASE_URL = "https://newstok-production.up.railway.app/api/videos/all";
 
 export async function fetchAllVideos(page = 1, limit = 10): Promise<Video[]> {
   try {
