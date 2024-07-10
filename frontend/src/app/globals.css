@@ -1,3 +1,43 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+body{
+    background-color: #1A1A1A;
+}
+
+header svg{
+    width: 130px;
+    fill: rgb(40 40 40);
+}
+
+.splide__arrows--ttb {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 50%;
+    right: -10%;
+    transform: translate(-50%, -50%);
+    z-index: 10;
+    border-radius: 10px;
+    height: 100px;
+}
+
+.splide__arrows--ttb .splide__arrow {
+    border: none;
+    cursor: pointer;
+    border-radius: 0;
+    background: rgba(0, 0, 0, 0.5); 
+}
+
+.splide__arrows--ttb .splide__arrow svg {
+    fill: white;
+}
+
+/* .splide__arrow--prev {
+    height: 50px;
+}
+
+.splide__arrow--next {
+    height: 50px;
+} */

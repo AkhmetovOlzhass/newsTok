@@ -11,12 +11,15 @@ interface Headline {
 
 async function processHeadlines(): Promise<void> {
   try {
-    const headlines: Headline[] = (await Text.find().sort({ date: 1 })) as unknown as Headline[];
+    
+    
+    const headlines: Headline[] = (await Text.find().sort({ date: -1 })) as unknown as Headline[];
     for (let headline of headlines) {
       if (headline.title) {
         const existingText = await Text.findOne({ title: headline.title });
 
         if (existingText && !existingText.link && !existingText.error) {
+          
           await run(headline);
         } else {
           console.log('No documents matched the query. Document not updated.');

@@ -25,7 +25,7 @@ const saveDataToMongoDB = async (data: TextData[]): Promise<void> => {
       });
 
       await newText.save();
-      console.log('Data saved');
+      console.log('Data saved: ' + el.title);
     }));
   } catch (err) {
     console.error('Error saving data:', err);

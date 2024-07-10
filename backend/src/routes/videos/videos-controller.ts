@@ -10,7 +10,9 @@ class VideosController {
 
   async getAllVideos(req: Request, res: Response): Promise<void> {
     try {
-      const videos = await this.videosService.getAllVideos();
+      const page = parseInt(req.query.page as string) || 1;
+      const limit = parseInt(req.query.limit as string) || 10;
+      const videos = await this.videosService.getAllVideos(page, limit);
       res.status(200).json(videos);
     } catch (error) {
       res.status(500).json({ message: "Internal server error"});

@@ -15,12 +15,9 @@ app.use((req, res, next) => {
     next();
 });
 
-// const BASE_URL = "http://localhost:3000";
+const BASE_URL = "http://localhost:3000";
 
-const BASE_URL = "https://news-tok.vercel.app"
-
-console.log(process.env.NODE_ENV);
-
+// const BASE_URL = "https://news-tok.vercel.app"
 
 app.use(cors({
     origin: BASE_URL,

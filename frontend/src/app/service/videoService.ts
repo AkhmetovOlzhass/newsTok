@@ -1,13 +1,12 @@
 import { Video } from '../types/video';
 
-const BASE_URL = process.env.NODE_ENV === 'production'
-  ? "https://newstok-production.up.railway.app/api/videos/all"
-  : "http://localhost:5000/api/videos/all";
+const BASE_URL = "http://localhost:5000/api/videos/all";
 
-export async function fetchAllVideos(): Promise<Video[]> {
+export async function fetchAllVideos(page = 1, limit = 10): Promise<Video[]> {
   try {
     if(BASE_URL){
-      const response = await fetch(BASE_URL);
+      const response = await fetch(`${BASE_URL}?page=${page}&limit=${limit}`);
+      
       if (!response.ok) {
         throw new Error('Network response was not ok');
       }

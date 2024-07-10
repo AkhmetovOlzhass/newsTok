@@ -9,6 +9,7 @@ interface VideoSearchResult {
   videos: {
     video_files: {
       link: string;
+      width: number
     }[];
   }[];
 }
@@ -18,8 +19,20 @@ async function searchVideos(query: string): Promise<string | null> {
         const response = await client.videos.search({ query, size: "medium" }) as VideoSearchResult;
         const videosLength = response.videos.length;
         if (videosLength > 0) {
-            const url: string = response.videos[Math.floor(Math.random() * videosLength)].video_files[0].link;
-            return url;
+
+            let random = Math.floor(Math.random() * videosLength)
+
+            let url: string;
+
+            response.videos[random].video_files.forEach((el, i) => {
+              if(el.width <= 1280){
+                url = el.link
+                return url
+              }
+            })
+
+            return null;
+            
         } else {
             console.log('No videos found for the query:', query);
             return null;
