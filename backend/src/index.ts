@@ -2,6 +2,7 @@ import connectDB from "./db";
 import express from 'express';
 import cors from 'cors';
 import globalRouter from "./routes/global-router";
+import { schedule } from 'node-cron';
 import { parsePages } from "./scraper";
 
 connectDB();
