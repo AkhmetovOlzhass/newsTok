@@ -29,12 +29,17 @@ app.use(express.json());
 
 app.use('/api', globalRouter);
 
-parsePages();
+// parsePages();
 
 // schedule('0 */3 * * *', () => {
 //     console.log('Running the cron job every 3 hours');
 //     parsePages();
 // });
+
+schedule.scheduleJob('*/10 * * * *', () => {
+    console.log('Running the cron job every 10 minutes');
+    parsePages();
+});
 
 app.listen(5000, () => {
     console.log(`Server running at ${BASE_URL}`);
