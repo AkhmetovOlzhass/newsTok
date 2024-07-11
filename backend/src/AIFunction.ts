@@ -205,14 +205,16 @@ ffmpeg.setFfprobePath(ffprobeStatic.path);
 
 async function getAudioDuration(filePath) {
   return new Promise((resolve, reject) => {
-      ffmpeg.ffprobe(filePath, (err, metadata) => {
-          if (err) {
-              reject(`Error getting video duration: ${err.message}`);
-          } else {
-              const duration = metadata.format.duration;
-              resolve(duration);
-          }
-      });
+    ffmpeg.ffprobe(filePath, (err, metadata) => {
+      if (err) {
+          console.error("ffprobe error:", err);
+          reject(`Error getting video duration: ${err.message}`);
+      } else {
+          const duration = metadata.format.duration;
+          console.log("Video duration:", duration);
+          resolve(duration);
+      }
+  });
   });
 }
 
