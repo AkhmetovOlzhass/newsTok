@@ -7,7 +7,6 @@ import { uploadVideoToS3 } from './s3/s3-module';
 import {generateSubtitles} from './generateSubtitles'
 import { Text } from "./routes/videos/models/text";
 import { processText } from "./createAudio";
-import musicMetadata from 'music-metadata'
 
 import dotenv from 'dotenv';
 
@@ -207,6 +206,8 @@ async function getAudioDuration(url) {
       method: 'GET',
       responseType: 'stream'
     });
+
+    const musicMetadata = (await import('music-metadata')).default;
 
     const metadata = await musicMetadata.parseStream(response.data, { mimeType: response.headers['content-type'] });
     const duration = metadata.format.duration; // длительность в секундах
