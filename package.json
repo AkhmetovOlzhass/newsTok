@@ -1,0 +1,5 @@
+{
+  "dependencies": {
+    "get-audio-duration": "^4.0.1"
+  }
+}

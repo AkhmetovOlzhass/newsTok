@@ -7,8 +7,7 @@ import { uploadVideoToS3 } from './s3/s3-module';
 import {generateSubtitles} from './generateSubtitles'
 import { Text } from "./routes/videos/models/text";
 import { processText } from "./createAudio";
-import ffmpeg  from 'fluent-ffmpeg';
-import ffprobeStatic from 'ffprobe-static'
+import { getAudioDurationInSeconds } from 'get-audio-duration'
 
 import dotenv from 'dotenv';
 
@@ -102,9 +101,11 @@ async function run(headline: Headline): Promise<void> {
     audio: audio,
     caption: subtitleUrl,
     videos: [],
-    audioSec: await getAudioDuration(audio) as number
+    audioSec: await getAudioDurationInSeconds(audio) as number
   };
 
+  console.log(allParts.audioSec);
+  
     const promptMain = `
     Task:
       Based on the total audio duration, calculate how many video segments (each 5 seconds long) can be created. For each segment, generate a corresponding part of the description ensuring it adheres to the specifications mentioned. The result should be a list of Video objects where each Video contains a 'title' in English In 3 words.
@@ -201,22 +202,21 @@ async function downloadVideo(videoUrl, outputPath) {
   });
 }
 
-ffmpeg.setFfprobePath(ffprobeStatic.path);
 
-async function getAudioDuration(filePath) {
-  return new Promise((resolve, reject) => {
-    ffmpeg.ffprobe(filePath, (err, metadata) => {
-        if (err) {
-            reject('Ошибка при получении длительности аудио: ' + err.message);
-        } else {
-            const duration = metadata.format.duration; // Длительность в секундах
-            console.log(duration);
+// async function getAudioDuration(filePath) {
+//   return new Promise((resolve, reject) => {
+//     ffmpeg.ffprobe(filePath, (err, metadata) => {
+//         if (err) {
+//             reject('Ошибка при получении длительности аудио: ' + err.message);
+//         } else {
+//             const duration = metadata.format.duration; // Длительность в секундах
+//             console.log(duration);
             
-            resolve(duration);
-        }
-    });
-});
-}
+//             resolve(duration);
+//         }
+//     });
+// });
+// }
 
 
 export { run };
