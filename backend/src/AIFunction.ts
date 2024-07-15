@@ -7,6 +7,8 @@ import { uploadVideoToS3 } from './s3/s3-module';
 import {generateSubtitles} from './generateSubtitles'
 import { Text } from "./routes/videos/models/text";
 import { processText } from "./createAudio";
+import ffmpeg  from 'fluent-ffmpeg';
+import ffprobeStatic from 'ffprobe-static'
 
 import dotenv from 'dotenv';
 
@@ -199,25 +201,21 @@ async function downloadVideo(videoUrl, outputPath) {
   });
 }
 
-async function getAudioDuration(url) {
-  try {
-    const response = await axios({
-      url,
-      method: 'GET',
-      responseType: 'stream'
+ffmpeg.setFfprobePath(ffprobeStatic.path);
+
+async function getAudioDuration(filePath) {
+  return new Promise((resolve, reject) => {
+    ffmpeg.ffprobe(filePath, (err, metadata) => {
+        if (err) {
+            reject('Ошибка при получении длительности аудио: ' + err.message);
+        } else {
+            const duration = metadata.format.duration; // Длительность в секундах
+            console.log(duration);
+            
+            resolve(duration);
+        }
     });
-
-    const musicMetadata = await import('music-metadata');
-
-    const metadata = await musicMetadata.default.parseStream(response.data, { mimeType: response.headers['content-type'] });
-    const duration = metadata.format.duration;
-
-    console.log("Audio duration:", duration);
-    return duration;
-  } catch (error) {
-    console.error("Error getting audio duration:", error);
-    throw new Error(`Error getting audio duration: ${error}`);
-  }
+});
 }
 
 

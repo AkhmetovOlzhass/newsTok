@@ -40,7 +40,7 @@ const parsePage = async (pageNumber: number): Promise<Article[]> => {
 };
 
 const parsePages = async (): Promise<void> => {
-  const pagesToParse: number = 3;
+  const pagesToParse: number = 1;
   let page: number = 1;
   let allHeadlines: Article[] = [];
 
