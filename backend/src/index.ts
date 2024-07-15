@@ -31,15 +31,15 @@ app.use('/api', globalRouter);
 
 // parsePages();
 
-// schedule('*/10 * * * *', () => {
-//     console.log('Running the cron job every 3 hours');
-//     parsePages();
+// schedule.scheduleJob('0 * * * *', function(){
+//     console.log('Задача выполняется каждый час.');
+//     parsePages()
 // });
 
-// schedule.scheduleJob('*/10 * * * *', () => {
-//     console.log('Running the cron job every 10 minutes');
+// schedule('0 * * * *', () => {
+//     console.log('Running the cron job every 60 minutes');
 //     parsePages();
-// });
+// }).start();
 
 app.listen(5000, () => {
     console.log(`Server running at ${BASE_URL}`);

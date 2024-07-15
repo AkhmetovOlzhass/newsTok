@@ -6,8 +6,14 @@ body{
     background-color: #1A1A1A;
 }
 
+body *{
+    font-family: Arial, sans-serif;
+    font-weight: 700;
+    font-size: 18px;
+}
+
 header svg{
-    width: 130px;
+    width: 170px;
     fill: rgb(40 40 40);
 }
 

@@ -44,7 +44,7 @@ async function synthesizeSpeech(text, isLocal): Promise<string | null> {
     const url = 'https://smartspeech.sber.ru/rest/v1/text:synthesize';
     const params = {
       format: 'wav16',
-      voice: ['Bys_24000', 'Nec_24000', 'May_24000', 'Tur_24000', 'Ost_24000', 'Pon_24000']
+      voice: ['Bys_24000', 'May_24000']
     };
 
     try {

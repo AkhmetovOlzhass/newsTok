@@ -8,7 +8,7 @@ interface TextData {
   text: string;
 }
 
-const saveDataToMongoDB = async (data: TextData[]): Promise<void> => {
+const saveDataToMongoDB = async (data: TextData[], site): Promise<void> => {
   try {
     await Promise.all(data.map(async (el) => {
       const existingText = await Text.findOne({ title: el.title });
@@ -21,7 +21,8 @@ const saveDataToMongoDB = async (data: TextData[]): Promise<void> => {
         title: el.title,
         text: el.text,
         date: new Date(),
-        link: null
+        link: null,
+        source: site
       });
 
       await newText.save();

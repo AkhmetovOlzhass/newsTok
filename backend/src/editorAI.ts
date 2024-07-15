@@ -20,7 +20,7 @@ interface VideoObj {
 
 async function editVideo(videoObj: VideoObj): Promise<string | void> {
   const everyLength = videoObj.audioSec / videoObj.videos.length;
-  let roundedNumber = parseFloat(everyLength.toFixed(1));
+  let roundedNumber = parseFloat(everyLength.toFixed(1) + 0.1);
 
   console.log(roundedNumber);
 

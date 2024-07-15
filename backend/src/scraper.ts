@@ -50,7 +50,7 @@ const parsePages = async (): Promise<void> => {
     page++;
   }
 
-  await saveDataToMongoDB(allHeadlines);
+  await saveDataToMongoDB(allHeadlines, "Tengrinews");
   await processHeadlines();
 };
 

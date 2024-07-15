@@ -13,7 +13,8 @@ const textSchema = new Schema({
   error: {
     type: Boolean,
     default: false
-  }
+  },
+  source: String
 });
 
 const Text =  mongoose.model('Text', textSchema);

@@ -3,8 +3,8 @@ import Image from 'next/image';
 const Header = () => {
     return(
         <header className="flex justify-center border-b-[1px] border-b-[#ffffff12] bg-[#282828]  ">
-            <div className=' container'>
-                <div className="flex items-center py-2 px-8">
+            <div className='w-full'>
+                <div className="flex items-center py-2 px-4">
                 <svg viewBox="0 0 132 35" xmlns="http://www.w3.org/2000/svg">
                     <g clipPath="url(#clip0_7_12)">
                     <g clipPath="url(#clip1_7_12)">
