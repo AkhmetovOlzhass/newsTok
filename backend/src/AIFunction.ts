@@ -207,10 +207,10 @@ async function getAudioDuration(url) {
       responseType: 'stream'
     });
 
-    const musicMetadata = (await import('music-metadata')).default;
+    const musicMetadata = await import('music-metadata');
 
-    const metadata = await musicMetadata.parseStream(response.data, { mimeType: response.headers['content-type'] });
-    const duration = metadata.format.duration; // длительность в секундах
+    const metadata = await musicMetadata.default.parseStream(response.data, { mimeType: response.headers['content-type'] });
+    const duration = metadata.format.duration;
 
     console.log("Audio duration:", duration);
     return duration;
