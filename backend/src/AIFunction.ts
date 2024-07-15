@@ -7,7 +7,8 @@ import { uploadVideoToS3 } from './s3/s3-module';
 import {generateSubtitles} from './generateSubtitles'
 import { Text } from "./routes/videos/models/text";
 import { processText } from "./createAudio";
-import { getAudioDurationInSeconds } from 'get-audio-duration'
+import ffmpeg  from 'fluent-ffmpeg';
+import ffprobeStatic from 'ffprobe-static'
 
 import dotenv from 'dotenv';
 
@@ -65,7 +66,7 @@ async function generateFullText(headline: Headline): Promise<{ description: stri
 }
 
 async function run(headline: Headline): Promise<void> {
-    console.log();
+    console.log(headline.title);
 
     const newHeadline = await generateFullText(headline);
 
@@ -101,11 +102,9 @@ async function run(headline: Headline): Promise<void> {
     audio: audio,
     caption: subtitleUrl,
     videos: [],
-    audioSec: await getAudioDurationInSeconds(audio) as number
+    audioSec: await getAudioDuration(audio) as number
   };
 
-  console.log(allParts.audioSec);
-  
     const promptMain = `
     Task:
       Based on the total audio duration, calculate how many video segments (each 5 seconds long) can be created. For each segment, generate a corresponding part of the description ensuring it adheres to the specifications mentioned. The result should be a list of Video objects where each Video contains a 'title' in English In 3 words.
@@ -136,6 +135,7 @@ async function run(headline: Headline): Promise<void> {
   
       for (const res of jsonResult) {
         const video = await searchVideos(res.title);
+        
         if(video){
           videos.push(video)
           console.log(video);
@@ -181,6 +181,8 @@ async function run(headline: Headline): Promise<void> {
 }
 
 async function hasTitle(title){
+  console.log("Cannot find: " + title);
+  
   const result = await model.generateContent(`generate a simpler title, only one another title for this title: ${title}`);
   const text = result.response.text();
   const jsonResult = JSON.parse(text);
@@ -202,21 +204,22 @@ async function downloadVideo(videoUrl, outputPath) {
   });
 }
 
+ffmpeg.setFfprobePath(ffprobeStatic.path);
 
-// async function getAudioDuration(filePath) {
-//   return new Promise((resolve, reject) => {
-//     ffmpeg.ffprobe(filePath, (err, metadata) => {
-//         if (err) {
-//             reject('Ошибка при получении длительности аудио: ' + err.message);
-//         } else {
-//             const duration = metadata.format.duration; // Длительность в секундах
-//             console.log(duration);
+async function getAudioDuration(filePath) {
+  return new Promise((resolve, reject) => {
+    ffmpeg.ffprobe(filePath, (err, metadata) => {
+        if (err) {
+            reject('Ошибка при получении длительности аудио: ' + err.message);
+        } else {
+            const duration = metadata.format.duration; // Длительность в секундах
+            console.log(duration);
             
-//             resolve(duration);
-//         }
-//     });
-// });
-// }
+            resolve(duration);
+        }
+    });
+});
+}
 
 
 export { run };

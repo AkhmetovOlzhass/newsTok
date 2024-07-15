@@ -107,8 +107,17 @@ async function editVideo(videoObj: VideoObj): Promise<string | void> {
     const text = await promptResult.response.text();
     const jsonResult = JSON.parse(text);
 
+    console.log("json: " + jsonResult);
+    
+
     const videoSuccessId = await getShotstackId(jsonResult);
+
+    console.log("videoSuccess: " + videoSuccessId);
+    
     const finalBody = await fetchStatus(videoSuccessId);
+
+    console.log("final" + finalBody);
+    
 
     return finalBody.response.url;
   } catch (error) {
@@ -130,9 +139,13 @@ const getShotstackId = async (jsonResult: any): Promise<string> => {
 
 const fetchStatus = async (renderId: string): Promise<any> => {
   const url = `https://api.shotstack.io/edit/stage/render/${renderId}`;
+  console.log(url);
+  
 
   while (true) {
     const response = await fetch(url, { method: 'GET', headers: headers });
+    console.log("response: " + url);
+    
     const body = await response.json();
 
     if (body.response.status === 'done') {

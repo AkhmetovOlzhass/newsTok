@@ -1,8 +1,8 @@
 import axios from 'axios';
 import { Agent } from 'https';
 import { stringify } from 'qs';
-import { v4 as uuidv4 } from 'uuid';
 import { uploadFileToS3 } from './s3/s3-module';
+import { v4 as uuidv4 } from 'uuid';
 import fs from 'fs'
 
 import dotenv from 'dotenv';
