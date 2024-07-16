@@ -1,6 +1,6 @@
 import { Video } from '../types/video';
 
-const BASE_URL = "https://kazvision-f7ef32e804e1.herokuapp.com";
+const BASE_URL = "https://kazvision-f7ef32e804e1.herokuapp.com/api/videos/all";
 
 // const BASE_URL = "https://newstok-production.up.railway.app/api/videos/all";
 
