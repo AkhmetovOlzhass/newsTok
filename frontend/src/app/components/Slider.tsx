@@ -21,14 +21,9 @@ const VerticalSlider: React.FC = () => {
     const { filter } = useFilter();
 
     useEffect(() => {
-        console.log(filter);
-        
-    }, [filter])
-
-    useEffect(() => {
         const loadVideos = async () => {
             setLoading(true);
-            const newVideos = await fetchAllVideos(page, 1);
+            const newVideos = await fetchAllVideos(page, 1, filter);
             const updatedVideos = [...videosRef.current, ...newVideos];
             setVideos(updatedVideos);
             videosRef.current = updatedVideos;
@@ -37,7 +32,7 @@ const VerticalSlider: React.FC = () => {
         };
 
         loadVideos();
-    }, [page]);
+    }, [page, filter]);
 
     useEffect(() => {
         if (videos.length > 0 && firstLoad.current) {
@@ -82,7 +77,8 @@ const VerticalSlider: React.FC = () => {
                 }}
                 onMoved={handleMoved}
             >
-                {videos.filter(video => video.source === filter).map((video, index) => (
+                {videos.map((video, index) => (
+                    
                     video.link && (
                         <React.Fragment key={index}>
                             <SplideSlide>

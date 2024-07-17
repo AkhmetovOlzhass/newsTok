@@ -4,10 +4,10 @@ const BASE_URL = "https://kazvision-f7ef32e804e1.herokuapp.com/api/videos/all";
 
 // const BASE_URL = "https://newstok-production.up.railway.app/api/videos/all";
 
-export async function fetchAllVideos(page = 1, limit = 10): Promise<Video[]> {
+export async function fetchAllVideos(page = 1, limit = 10, filter: string): Promise<Video[]> {
   try {
     if(BASE_URL){
-      const response = await fetch(`${BASE_URL}?page=${page}&limit=${limit}`);
+      const response = await fetch(`${BASE_URL}?page=${page}&limit=${limit}&source=${filter}`);
       
       if (!response.ok) {
         throw new Error('Network response was not ok');
