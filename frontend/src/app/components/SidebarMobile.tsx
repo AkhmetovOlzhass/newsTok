@@ -19,7 +19,7 @@ const Sidebar: React.FC<SidebarProps> = ({isOpen, toggleSidebar }) => {
     };
     
     return (
-        <div className={`bg-[#282828] ${isOpen === true ? ' right-0 visible ' : '-right-full invisible'} w-64 fixed transition-all duration-500 top-20 text-white`}>
+        <div className={`bg-[#282828] ${isOpen === true ? ' right-0 visible ' : '-right-full invisible'} z-10 w-64 fixed transition-all duration-500 top-20 text-white`}>
             <div className=" min-h-screen flex flex-col justify-between p-5">
                 <div>
                     <div className="mb-5">
