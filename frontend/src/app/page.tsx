@@ -5,6 +5,7 @@ import VerticalSlider from "./components/Slider";
 export default function Home() {
   return (
     <main className="flex flex-col">
+      
       <VerticalSlider/>
     {/* <VideoList /> */}
     </main>

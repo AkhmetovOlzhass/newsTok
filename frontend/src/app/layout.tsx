@@ -22,7 +22,7 @@ export default function RootLayout({
       <body className={inter.className}>
         <div className="h-screen">
             <FilterProvider>
-              <Header/>
+                <Header/>
               <Sidebar/>
               {children}
             </FilterProvider>

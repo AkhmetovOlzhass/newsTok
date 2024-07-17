@@ -1,3 +1,5 @@
+'use client'
+
 import { useFilter } from "../contexts/context";
 
 const Sidebar = () => {
