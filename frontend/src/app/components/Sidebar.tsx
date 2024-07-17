@@ -1,17 +1,24 @@
 'use client'
 
+import { SetStateAction, useState } from "react";
 import { useFilter } from "../contexts/context";
 
 const Sidebar = () => {
 
     const { changeFilter } = useFilter();
+    const [active, setActive] = useState('');
+
+    const handleClick = (filter: string) => {
+        changeFilter(filter);
+        setActive(filter);
+    };
     
     return (
         <div className="bg-inherit fixed w-64 text-white">
             <div className=" min-h-screen flex flex-col justify-between p-5">
                 <div>
                     <div className="mb-5">
-                        <a onClick={() => changeFilter('Tengrinews')} href="#" className="flex items-center p-2 rounded-md bg-gray-800 transition-all hover:bg-gray-800">
+                        <a onClick={() => handleClick('Tengrinews')} href="#" className={`flex items-center p-2 rounded-md ${active === 'Tengrinews' ? 'bg-gray-800' : 'bg-inherit'} transition-all hover:bg-gray-800`}>
                             <svg className="w-8" viewBox="0 0 39 39" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M25.0169 2.925C23.2389 2.32875 21.3754 2.02686 19.5 2.03125C17.2738 2.03125 15.1532 2.44563 13.2032 3.20938C8.7344 4.93188 5.16753 8.42563 3.3394 12.8456V12.8538C2.47187 14.962 2.02739 17.2202 2.03128 19.5C2.03128 28.1369 8.30378 35.3113 16.5344 36.7088H16.5425C17.5094 36.8794 18.4925 36.9688 19.5 36.9688C22.555 36.9688 25.4232 36.1888 27.9175 34.8075H27.9257C30.2332 33.5319 32.2157 31.7606 33.7432 29.6156C35.7744 26.7638 36.9688 23.2781 36.9688 19.5C36.9688 17.3144 36.5625 15.2181 35.8232 13.2925" stroke="#F8F8F8" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
                                 <path d="M13.1934 3.2045L14.8468 4.51669L18.3138 5.18294L17.754 6.99969L15.7861 7.68056L13.984 10.5877L11.0468 12.4044L6.92903 12.9496L6.83803 14.5844L8.15509 16.0079L8.06409 18.4153L4.40053 15.9169L3.34265 12.8481" stroke="#F8F8F8" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
@@ -24,7 +31,7 @@ const Sidebar = () => {
                         </a>
                     </div>
                     <div className="mb-5">
-                        <a onClick={() => changeFilter('DigitalBusiness')}  href="#" className="flex items-center p-2 rounded-md transition-all hover:bg-gray-800">
+                        <a onClick={() => handleClick('DigitalBusiness')}  href="#" className={`flex items-center p-2 rounded-md ${active === 'DigitalBusiness' ? 'bg-gray-800' : 'bg-inherit'} transition-all hover:bg-gray-800`}>
                             <svg className="w-8 mr-2" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M32.5 5H7.5C6.11929 5 5 6.11929 5 7.5V25.8333C5 27.214 6.11929 28.3333 7.5 28.3333H32.5C33.8807 28.3333 35 27.214 35 25.8333V7.5C35 6.11929 33.8807 5 32.5 5Z" stroke="#F8F8F8" strokeWidth="2" strokeLinejoin="round"/>
                                 <path d="M11.6666 35H28.3333M20 28.3333V35" stroke="#F8F8F8" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
