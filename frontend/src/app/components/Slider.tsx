@@ -21,6 +21,11 @@ const VerticalSlider: React.FC = () => {
     const { filter } = useFilter();
 
     useEffect(() => {
+        console.log(filter);
+        
+    }, [filter])
+
+    useEffect(() => {
         const loadVideos = async () => {
             setLoading(true);
             const newVideos = await fetchAllVideos(page, 1);
