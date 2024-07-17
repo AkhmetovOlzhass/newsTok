@@ -6,7 +6,7 @@ import { useFilter } from "../contexts/context";
 const Sidebar = () => {
 
     const { changeFilter } = useFilter();
-    const [active, setActive] = useState('');
+    const [active, setActive] = useState('Tengrinews');
 
     const handleClick = (filter: string) => {
         changeFilter(filter);
@@ -41,7 +41,7 @@ const Sidebar = () => {
                         </a>
                     </div>
                     <div className="mb-5">
-                        <a href="#" className="flex items-center p-2 rounded-md transition-all hover:bg-gray-800">
+                        <a onClick={() => handleClick('TengrinewsSport')} href="#" className={`flex items-center p-2 rounded-md ${active === 'DigitalBusiness' ? 'bg-gray-800' : 'bg-inherit'} transition-all hover:bg-gray-800`}>
                         <svg className="w-8 mr-2" viewBox="0 0 45 45" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M22.5 39.375C31.8198 39.375 39.375 31.8198 39.375 22.5C39.375 13.1802 31.8198 5.625 22.5 5.625C13.1802 5.625 5.625 13.1802 5.625 22.5C5.625 31.8198 13.1802 39.375 22.5 39.375Z" stroke="white" strokeWidth="2" strokeMiterlimit="10" strokeLinecap="round"/>
                             <path d="M22.5 15.394L15.8124 21.0041M22.5 15.394L29.1876 21.0041M22.5 15.394V10.3342M15.8124 21.0041L17.5781 28.125M15.8124 21.0041L11.1656 19.0354M17.5781 28.125H27.4219M17.5781 28.125L15.1172 32.3438M27.4219 28.125L29.1876 21.0041M27.4219 28.125L29.8828 32.3438L27.4219 38.584M29.1876 21.0041L33.8344 19.0354M33.8344 19.0354L36.1002 12.5965M33.8344 19.0354L39.2871 23.7278M11.1656 19.0354L8.8998 12.5965M11.1656 19.0354L5.71289 23.7278M22.5 10.3342L28.125 6.58653M22.5 10.3342L16.875 6.58565M36.1002 32.3438H30.0586M15.1172 32.3438L17.6106 38.6279M15.1172 32.3438H8.93232" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>

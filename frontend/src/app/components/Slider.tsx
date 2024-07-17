@@ -42,7 +42,7 @@ const VerticalSlider: React.FC = () => {
     }, [videos]);
 
     useEffect(() => {
-        const preloadIndexes = new Set<number>([activeIndex, activeIndex - 1, activeIndex + 1]);
+        const preloadIndexes = new Set<number>([activeIndex, activeIndex - 1]);
         setPreloadedIndexes(preloadIndexes);
     }, [activeIndex]);
 
