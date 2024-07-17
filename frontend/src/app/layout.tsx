@@ -3,6 +3,7 @@ import { Inter } from "next/font/google";
 import Header from "./components/Header";
 import "./globals.css";
 import Sidebar from "./components/Sidebar";
+import { FilterProvider } from "./contexts/context";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -20,9 +21,11 @@ export default function RootLayout({
     <html lang="en">
       <body className={inter.className}>
         <div className="h-screen">
-          <Header/>
-          <Sidebar/>
-          {children}
+            <FilterProvider>
+              <Header/>
+              <Sidebar/>
+              {children}
+            </FilterProvider>
         </div>
       </body>
     </html>

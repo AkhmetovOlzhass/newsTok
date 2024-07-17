@@ -6,6 +6,7 @@ import '@splidejs/splide/dist/css/splide.min.css';
 import { fetchAllVideos } from '../service/videoService';
 import { Video } from '../types/video';
 import ReactPlayer from 'react-player';
+import { useFilter } from '../contexts/context';
 
 const VerticalSlider: React.FC = () => {
     const [videos, setVideos] = useState<Video[]>([]);
@@ -16,6 +17,8 @@ const VerticalSlider: React.FC = () => {
     const videosRef = useRef<Video[]>([]);
     const firstLoad = useRef(true);
     const [preloadedIndexes, setPreloadedIndexes] = useState<Set<number>>(new Set());
+
+    const { filter } = useFilter();
 
     useEffect(() => {
         const loadVideos = async () => {

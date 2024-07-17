@@ -3,4 +3,5 @@ export interface Video {
     title: string;
     text: string;
     link: string;
+    source: string
   }
