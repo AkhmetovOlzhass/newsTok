@@ -68,7 +68,7 @@ const Header = () => {
             <SidebarMobile isOpen={isSidebarOpen} toggleSidebar={toggleSidebar} />
         </header>
 
-        <div className={`${isSidebarOpen ? 'absolute w-full h-full z-5 bg-black opacity-45' : ''} transition-all duration-500`} onClick={toggleSidebar}></div>
+        <div className={`${isSidebarOpen ? 'absolute w-full h-full z-10 bg-black opacity-45' : ''} transition-all duration-500`} onClick={toggleSidebar}></div>
         </>
     )
 }
