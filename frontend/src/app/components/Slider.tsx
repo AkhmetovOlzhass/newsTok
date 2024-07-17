@@ -83,12 +83,12 @@ const VerticalSlider: React.FC = () => {
                 onMoved={handleMoved}
             >
                 {videos.map((video, index) => (
-                    video.link && (
+                    video.link && video.source == filter && (
                         <React.Fragment key={index}>
                             <SplideSlide>
                                 <div className=" h-[600px] w-[337.5px] rounded-2xl overflow-hidden relative">
                                     <div className="relative z-10 w-full h-full  mx-auto">
-                                        {preloadedIndexes.has(index) && video.source == filter ? (
+                                        {preloadedIndexes.has(index) ? (
                                             <ReactPlayer
                                                 loop={true}
                                                 url={video.link}
