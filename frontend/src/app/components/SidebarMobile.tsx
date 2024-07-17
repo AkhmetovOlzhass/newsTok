@@ -3,18 +3,23 @@
 import { SetStateAction, useState } from "react";
 import { useFilter } from "../contexts/context";
 
+interface SidebarProps {
+    toggleSidebar: () => void;
+    isOpen: boolean
+  }
 
-const Sidebar = () => {
+const Sidebar: React.FC<SidebarProps> = ({isOpen, toggleSidebar }) => {
     const { changeFilter } = useFilter();
     const [active, setActive] = useState('Tengrinews');
   
     const handleClick = (filter: string) => {
       changeFilter(filter);
       setActive(filter);
+      toggleSidebar();
     };
     
     return (
-        <div className="bg-inherit hidden md:block fixed w-64 text-white">
+        <div className={`bg-[#282828] ${isOpen === true ? ' right-0 visible ' : '-right-full invisible'} w-64 fixed transition-all duration-500 top-20 text-white`}>
             <div className=" min-h-screen flex flex-col justify-between p-5">
                 <div>
                     <div className="mb-5">

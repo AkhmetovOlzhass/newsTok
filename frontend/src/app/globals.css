@@ -47,3 +47,9 @@ header svg{
 .splide__arrow--next {
     height: 50px;
 } */
+
+@media(max-width: 768px){
+    .splide__arrows--ttb{
+        display: none;
+    }
+}
