@@ -20,7 +20,7 @@ interface FilterProviderProps {
 }
 
 export const FilterProvider: React.FC<FilterProviderProps> = ({ children }) => {
-  const [filter, setFilter] = useState<string>('Tengrinews');
+  const [filter, setFilter] = useState<string>('DigitalBusiness');
 
   const changeFilter = (newFilter: string) => {
     
