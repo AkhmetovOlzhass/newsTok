@@ -64,10 +64,10 @@ const Sidebar: React.FC<SidebarProps> = ({isOpen, toggleSidebar }) => {
                             <span className="ml-2">Образование</span>
                         </a>
                     </div>
-                    <div className="text-left mt-5">
+                    {/* <div className="text-left mt-5">
                         <p className="text-gray-400">Войдите, ставить лайки видео и читать комментарии.</p>
                         <button className="mt-5 transition-all bg-[#213a39] text-white px-4 py-2 rounded hover:bg-[#1e2e2d]">Войти</button>
-                    </div>
+                    </div> */}
                 </div>
             </div>
         </div>
