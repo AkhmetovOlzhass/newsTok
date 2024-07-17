@@ -15,7 +15,7 @@ const Header = () => {
     };
     
     return(
-        <header className="flex relative justify-center border-b-[1px] border-b-[#ffffff12] bg-[#282828]  ">
+        <header className="flex sticky top-0 justify-center border-b-[1px] border-b-[#ffffff12] bg-[#282828]  ">
             <div className='w-full'>
                 <div className="flex items-center justify-between py-2 px-4">
                     <svg viewBox="0 0 132 35" xmlns="http://www.w3.org/2000/svg">
