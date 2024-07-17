@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useCallback, useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { Splide, SplideSlide } from '@splidejs/react-splide';
 import '@splidejs/splide/dist/css/splide.min.css';
 import { fetchAllVideos } from '../service/videoService';
@@ -45,6 +45,14 @@ const VerticalSlider: React.FC = () => {
         const preloadIndexes = new Set<number>([activeIndex, activeIndex - 1, activeIndex + 1]);
         setPreloadedIndexes(preloadIndexes);
     }, [activeIndex]);
+
+    useEffect(() => {
+        // Reset the state when the filter changes
+        setPage(1);
+        setVideos([]);
+        videosRef.current = [];
+        firstLoad.current = true;
+    }, [filter]);
 
     const handleMoved = (splide: { index: number; }) => {
         setActiveIndex(splide.index);
