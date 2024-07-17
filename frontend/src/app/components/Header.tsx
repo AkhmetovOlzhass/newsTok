@@ -15,7 +15,8 @@ const Header = () => {
     };
     
     return(
-        <header className="flex sticky top-0 z-20 justify-center border-b-[1px] border-b-[#ffffff12] bg-[#282828]  ">
+        <>
+            <header className="flex sticky top-0 z-20 justify-center border-b-[1px] border-b-[#ffffff12] bg-[#282828]  ">
             <div className='w-full'>
                 <div className="flex items-center justify-between py-2 px-4">
                     <svg viewBox="0 0 132 35" xmlns="http://www.w3.org/2000/svg">
@@ -63,8 +64,12 @@ const Header = () => {
                     <BurgerMenu onClick={toggleSidebar} />
                 </div>
             </div>
+            
             <SidebarMobile isOpen={isSidebarOpen} toggleSidebar={toggleSidebar} />
         </header>
+
+        <div className={`${isSidebarOpen ? 'absolute w-full h-full z-5 bg-black opacity-45' : ''} transition-all duration-500`} onClick={toggleSidebar}></div>
+        </>
     )
 }
 
