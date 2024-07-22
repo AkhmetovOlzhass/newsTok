@@ -93,6 +93,11 @@ const VerticalSlider: React.FC = () => {
         playerRefs.current = videos.map(() => createRef<ReactPlayer>());
     }, [videos.length]);
 
+    const handleRangeStyle = (value: number) => {
+        const percentage = (value * 100).toFixed(2); // Преобразуем текущее значение в проценты
+        return `linear-gradient(90deg, white ${percentage}%, rgba(255, 255, 255, 0.34) ${percentage}%)`;
+    };
+
     return (
         <div className="container mx-auto pt-8 rounded-lg relative flex items-center h-full justify-center w-2/4">
             <Splide
@@ -150,6 +155,7 @@ const VerticalSlider: React.FC = () => {
                                                         max="1"
                                                         value={played}
                                                         step="any"
+                                                        style={{ background: handleRangeStyle(played) }}
                                                         onChange={(e) => {
                                                             const newPlayed = parseFloat(e.target.value);
                                                             setPlayed(newPlayed);
