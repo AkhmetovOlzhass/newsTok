@@ -105,7 +105,7 @@ const VerticalSlider: React.FC = () => {
                                                 <ReactPlayer
                                                     loop={true}
                                                     url={video.link}
-                                                    playing={index === activeIndex && playing}
+                                                    playing={index === activeIndex || playing}
                                                     volume={volume}
                                                     onProgress={handleProgress}
                                                     controls={false}
