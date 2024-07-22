@@ -18,7 +18,7 @@ const VerticalSlider: React.FC = () => {
     const firstLoad = useRef(true);
     const [preloadedIndexes, setPreloadedIndexes] = useState<Set<number>>(new Set());
 
-    const [playing, setPlaying] = useState(false);
+    const [playing, setPlaying] = useState(true);
     const playerRef = useRef<ReactPlayer | null>(null);
     const [volume, setVolume] = useState(0.8);
     const [played, setPlayed] = useState(0);
