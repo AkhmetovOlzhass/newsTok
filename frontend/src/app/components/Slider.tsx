@@ -32,7 +32,11 @@ const VerticalSlider: React.FC = () => {
         setPlaying(!playing)
     };
     const handleVolumeChange = (e: { target: { value: string; }; }) => setVolume(parseFloat(e.target.value));
-    const handleProgress = (state: { played: React.SetStateAction<number>; }) => setPlayed(state.played);
+    const handleProgress = (state: { played: React.SetStateAction<number>; }) => {
+        setPlayed(state.played)
+        console.log(state.played);
+        
+    };
 
     const { filter } = useFilter();
 
@@ -152,7 +156,7 @@ const VerticalSlider: React.FC = () => {
                                                             const newPlayed = parseFloat(e.target.value);
                                                             setPlayed(newPlayed);
 
-                                                            console.log(newPlayed);
+                                                            // console.log(newPlayed);
                                                             
                                                             
                                                         }}
