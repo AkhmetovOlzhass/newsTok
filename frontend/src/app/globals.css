@@ -67,7 +67,6 @@ input[type="range"] {
     appearance: none;
     width: 100%; /* Полная ширина контейнера */
     height: 4px; /* Тонкий ползунок */
-    background: rgba(255, 255, 255, 0.3); /* Полупрозрачный фон */
     outline: none; /* Убираем контур */
     opacity: 0.7; /* Немного прозрачности */
     transition: opacity .2s ease-in-out;
@@ -75,6 +74,10 @@ input[type="range"] {
 
 input[type="range"]:hover {
     opacity: 1; /* Полная видимость при наведении */
+}
+
+input[type="range"]:hover::-webkit-slider-thumb{
+    display: block;
 }
 
 /* Стили для ползунка */
@@ -87,6 +90,7 @@ input[type="range"]::-webkit-slider-thumb {
     background: #FFFFFF; /* Белый ползунок */
     cursor: pointer;
     box-shadow: 0 0 2px #000000; /* Небольшая тень для видимости */
+    display: none
 }
 
 input[type="range"]::-moz-range-thumb {
