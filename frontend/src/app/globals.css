@@ -65,9 +65,10 @@ input[type="range"] {
     -webkit-appearance: none;  /* Убираем стандартный стиль для Chrome */
     appearance: none;
     width: 100%; /* Полная ширина контейнера */
-    height: 4px; /* Тонкий ползунок */
+    height: 1px; /* Тонкий ползунок */
     outline: none; /* Убираем контур */
     transition: opacity .2s ease-in-out;
+    background-color: rgba(255, 255, 255, 0.34);
 }
 
 input[type="range"]:hover::-webkit-slider-thumb{
@@ -124,6 +125,6 @@ input[type="range"]::-ms-thumb {
 }
 
 .controls input[type="range"] {
-    width: 200px;
+    width: 220px;
     cursor: pointer;
 }
