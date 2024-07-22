@@ -58,20 +58,84 @@ header svg{
     position: relative;
     width: auto; /* Вы можете установить свои размеры */
     height: 100%;
+    background: black;
+    overflow: hidden;
+}
+
+input[type="range"] {
+    -webkit-appearance: none;  /* Убираем стандартный стиль для Chrome */
+    appearance: none;
+    width: 100%; /* Полная ширина контейнера */
+    height: 4px; /* Тонкий ползунок */
+    background: rgba(255, 255, 255, 0.3); /* Полупрозрачный фон */
+    outline: none; /* Убираем контур */
+    opacity: 0.7; /* Немного прозрачности */
+    transition: opacity .2s ease-in-out;
+}
+
+input[type="range"]:hover {
+    opacity: 1; /* Полная видимость при наведении */
+}
+
+/* Стили для ползунка */
+input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 15px;
+    height: 15px;
+    border-radius: 50%; 
+    background: #FFFFFF; /* Белый ползунок */
+    cursor: pointer;
+    box-shadow: 0 0 2px #000000; /* Небольшая тень для видимости */
+}
+
+input[type="range"]::-moz-range-thumb {
+    width: 15px;
+    height: 15px;
+    border: none;
+    border-radius: 50%;
+    background: #FFFFFF;
+    cursor: pointer;
+    box-shadow: 0 0 2px #000000;
+}
+
+/* Добавьте дополнительные стили для IE */
+input[type="range"]::-ms-thumb {
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    background: #FFFFFF;
+    cursor: pointer;
+}
+
+.react-player {
+    position: absolute;
+    top: 0;
+    left: 0;
 }
 
 .controls {
     position: absolute;
-    bottom: 20px;
-    left: 20px;
-    z-index: 1;
+    bottom: 10px;
+    left: 10px;
+    right: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px;
+    background-color: rgba(0, 0, 0, 0.7);
 }
 
 .controls button {
-    padding: 10px;
-    font-size: 16px;
-    color: white;
-    background: rgba(0, 0, 0, 0.5);
+    padding: 10px 20px;
+    background: #fff;
     border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.controls input[type="range"] {
+    width: 200px;
     cursor: pointer;
 }
