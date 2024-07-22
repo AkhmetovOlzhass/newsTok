@@ -80,6 +80,7 @@ const VerticalSlider: React.FC = () => {
         }
 
         setPlaying(true)
+        setPlayed(0)
 
         if(splide.index == 0){
             setPlaying(false)
