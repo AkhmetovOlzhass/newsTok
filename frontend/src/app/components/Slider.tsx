@@ -18,7 +18,7 @@ const VerticalSlider: React.FC = () => {
     const firstLoad = useRef(true);
     const [preloadedIndexes, setPreloadedIndexes] = useState<Set<number>>(new Set());
 
-    const [playing, setPlaying] = useState(true);
+    const [playing, setPlaying] = useState(false);
     const playerRef = useRef<ReactPlayer | null>(null);
     const [volume, setVolume] = useState(0.8);
     const [played, setPlayed] = useState(0);
@@ -72,6 +72,11 @@ const VerticalSlider: React.FC = () => {
         setActiveIndex(splide.index);
         if (splide.index === videosRef.current.length - 1 && !loading) {
             setPage(prevPage => prevPage + 1);
+        }
+
+        if(splide.index == 0){
+            setPlaying(false)
+            console.log(splide.index);
         }
 
         setPlaying(true)
