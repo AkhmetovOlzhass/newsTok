@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useEffect, useRef, useState } from 'react';
+import React, { createRef, useEffect, useRef, useState } from 'react';
 import { Splide, SplideSlide } from '@splidejs/react-splide';
 import '@splidejs/splide/dist/css/splide.min.css';
 import { fetchAllVideos } from '../service/videoService';
@@ -20,6 +20,7 @@ const VerticalSlider: React.FC = () => {
 
     const [playing, setPlaying] = useState(false);
     const playerRef = useRef<ReactPlayer | null>(null);
+    const playerRefs = useRef(videos.map(() => createRef<ReactPlayer>()));
     const [volume, setVolume] = useState(0.8);
     const [played, setPlayed] = useState(0);
 
@@ -128,6 +129,7 @@ const VerticalSlider: React.FC = () => {
                                                     width="auto"
                                                     height="100%"
                                                     className="react-player"
+                                                    ref={playerRefs.current[index]}
                                                 />
                                                 <div className="controls">
                                                     <button onClick={handlePlayPause}>
@@ -143,19 +145,21 @@ const VerticalSlider: React.FC = () => {
                                                     />
                                                     <input
                                                         type="range"
-                                                        min={0}
-                                                        max={1}
+                                                        min="0"
+                                                        max="1"
                                                         value={played}
                                                         step="any"
                                                         onMouseDown={() => setPlaying(false)}
                                                         onChange={(e) => {
                                                             const newPlayed = parseFloat(e.target.value);
                                                             setPlayed(newPlayed);
-                                                            if (playerRef.current) {
-                                                                playerRef.current.seekTo(newPlayed);
-                                                            }
                                                         }}
-                                                        onMouseUp={() => setPlaying(true)}
+                                                        onMouseUp={() => {
+                                                            if (playerRef.current) {
+                                                                playerRef.current.seekTo(played, 'fraction');  // Убедитесь, что используете 'fraction' если перемотка основана на доле длины видео
+                                                            }
+                                                            setPlaying(true);
+                                                        }}
                                                     />
                                                 </div>
                                             </div>
