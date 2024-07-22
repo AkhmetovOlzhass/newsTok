@@ -143,6 +143,7 @@ const VerticalSlider: React.FC = () => {
                                                     height="100%"
                                                     className="react-player"
                                                     ref={playerRefs.current[index]}
+                                                    onClick={handlePlayPause}
                                                 />
                                                 <div className="controls">
                                                     <button onClick={handlePlayPause}>
