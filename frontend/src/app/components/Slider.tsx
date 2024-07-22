@@ -79,7 +79,6 @@ const VerticalSlider: React.FC = () => {
 
         if(splide.index == 0){
             setPlaying(false)
-            console.log(splide.index);
         }
 
         
@@ -149,7 +148,6 @@ const VerticalSlider: React.FC = () => {
                                                         max="1"
                                                         value={played}
                                                         step="any"
-                                                        onMouseDown={() => setPlaying(false)}
                                                         onChange={(e) => {
                                                             const newPlayed = parseFloat(e.target.value);
                                                             setPlayed(newPlayed);
@@ -158,7 +156,6 @@ const VerticalSlider: React.FC = () => {
                                                             if (playerRef.current) {
                                                                 playerRef.current.seekTo(played, 'fraction');  // Убедитесь, что используете 'fraction' если перемотка основана на доле длины видео
                                                             }
-                                                            setPlaying(true);
                                                         }}
                                                     />
                                                 </div>
