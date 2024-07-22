@@ -23,7 +23,13 @@ const VerticalSlider: React.FC = () => {
     const [volume, setVolume] = useState(0.8);
     const [played, setPlayed] = useState(0);
 
-    const handlePlayPause = () => setPlaying(!playing);
+    const handlePlayPause = () => {
+        // if(index === activeIndex){
+        //     setPlaying(true)
+        // }
+
+        setPlaying(!playing)
+    };
     const handleVolumeChange = (e: { target: { value: string; }; }) => setVolume(parseFloat(e.target.value));
     const handleProgress = (state: { played: React.SetStateAction<number>; }) => setPlayed(state.played);
 
@@ -67,6 +73,8 @@ const VerticalSlider: React.FC = () => {
         if (splide.index === videosRef.current.length - 1 && !loading) {
             setPage(prevPage => prevPage + 1);
         }
+
+        setPlaying(true)
     };
 
     return (
@@ -105,7 +113,8 @@ const VerticalSlider: React.FC = () => {
                                                 <ReactPlayer
                                                     loop={true}
                                                     url={video.link}
-                                                    playing={index === activeIndex || index === activeIndex && playing}
+                                                    // playing={index === activeIndex}
+                                                    playing={playing}
                                                     volume={volume}
                                                     onProgress={handleProgress}
                                                     controls={false}
