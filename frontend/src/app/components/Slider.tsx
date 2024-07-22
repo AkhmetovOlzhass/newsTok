@@ -19,11 +19,13 @@ const VerticalSlider: React.FC = () => {
     const [preloadedIndexes, setPreloadedIndexes] = useState<Set<number>>(new Set());
 
     const [playing, setPlaying] = useState(false);
-    const playerRef = useRef(null);
+    const playerRef = useRef<ReactPlayer | null>(null);
+    const [volume, setVolume] = useState(0.8);
+    const [played, setPlayed] = useState(0);
 
-    const handlePlayPause = () => {
-        setPlaying(!playing);
-    };
+    const handlePlayPause = () => setPlaying(!playing);
+    const handleVolumeChange = (e: { target: { value: string; }; }) => setVolume(parseFloat(e.target.value));
+    const handleProgress = (state: { played: React.SetStateAction<number>; }) => setPlayed(state.played);
 
     const { filter } = useFilter();
 
@@ -104,7 +106,9 @@ const VerticalSlider: React.FC = () => {
                                                     loop={true}
                                                     url={video.link}
                                                     playing={index === activeIndex}
-                                                    controls={true}
+                                                    volume={volume}
+                                                    onProgress={handleProgress}
+                                                    controls={false}
                                                     width="auto"
                                                     height="100%"
                                                     className="react-player"
@@ -113,6 +117,30 @@ const VerticalSlider: React.FC = () => {
                                                     <button onClick={handlePlayPause}>
                                                         {playing ? 'Pause' : 'Play'}
                                                     </button>
+                                                    <input
+                                                        type="range"
+                                                        min={0}
+                                                        max={1}
+                                                        step="any"
+                                                        value={volume}
+                                                        onChange={handleVolumeChange}
+                                                    />
+                                                    <input
+                                                        type="range"
+                                                        min={0}
+                                                        max={1}
+                                                        value={played}
+                                                        step="any"
+                                                        onMouseDown={() => setPlaying(false)}
+                                                        onChange={(e) => {
+                                                            const newPlayed = parseFloat(e.target.value);
+                                                            setPlayed(newPlayed);
+                                                            if (playerRef.current) {
+                                                                playerRef.current.seekTo(newPlayed);
+                                                            }
+                                                        }}
+                                                        onMouseUp={() => setPlaying(true)}
+                                                    />
                                                 </div>
                                             </div>
                                         ) : null}

@@ -56,8 +56,8 @@ header svg{
 
 .player-wrapper {
     position: relative;
-    width: 640px; /* Вы можете установить свои размеры */
-    height: 360px;
+    width: auto; /* Вы можете установить свои размеры */
+    height: 100%;
 }
 
 .controls {
