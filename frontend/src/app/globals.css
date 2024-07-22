@@ -58,7 +58,6 @@ header svg{
     position: relative;
     width: auto; /* Вы можете установить свои размеры */
     height: 100%;
-    background: black;
     overflow: hidden;
 }
 
@@ -68,12 +67,7 @@ input[type="range"] {
     width: 100%; /* Полная ширина контейнера */
     height: 4px; /* Тонкий ползунок */
     outline: none; /* Убираем контур */
-    opacity: 0.7; /* Немного прозрачности */
     transition: opacity .2s ease-in-out;
-}
-
-input[type="range"]:hover {
-    opacity: 1; /* Полная видимость при наведении */
 }
 
 input[type="range"]:hover::-webkit-slider-thumb{
