@@ -88,6 +88,11 @@ const VerticalSlider: React.FC = () => {
         
     };
 
+    useEffect(() => {
+        // Обновляем массив рефов при изменении количества видео
+        playerRefs.current = videos.map(() => createRef<ReactPlayer>());
+    }, [videos.length]);
+
     return (
         <div className="container mx-auto pt-8 rounded-lg relative flex items-center h-full justify-center w-2/4">
             <Splide
@@ -155,8 +160,10 @@ const VerticalSlider: React.FC = () => {
                                                         onChange={(e) => {
                                                             const newPlayed = parseFloat(e.target.value);
                                                             setPlayed(newPlayed);
-                                                            if (playerRef.current) {
-                                                                playerRef.current.seekTo(newPlayed, 'fraction');
+                                                            // Обращаемся к текущему активному видео для выполнения перемотки
+                                                            const currentPlayer = playerRefs.current[activeIndex]?.current;
+                                                            if (currentPlayer) {
+                                                                currentPlayer.seekTo(newPlayed);
                                                             }
                                                         }}
                                                     />
