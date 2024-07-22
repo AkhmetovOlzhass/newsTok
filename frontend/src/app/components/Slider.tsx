@@ -155,14 +155,8 @@ const VerticalSlider: React.FC = () => {
                                                         onChange={(e) => {
                                                             const newPlayed = parseFloat(e.target.value);
                                                             setPlayed(newPlayed);
-
-                                                            // console.log(newPlayed);
-                                                            
-                                                            
-                                                        }}
-                                                        onMouseUp={() => {
                                                             if (playerRef.current) {
-                                                                playerRef.current.seekTo(played, 'fraction');  // Убедитесь, что используете 'fraction' если перемотка основана на доле длины видео
+                                                                playerRef.current.seekTo(newPlayed, 'fraction');
                                                             }
                                                         }}
                                                     />
