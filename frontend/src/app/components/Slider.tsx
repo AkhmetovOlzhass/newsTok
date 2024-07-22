@@ -151,7 +151,9 @@ const VerticalSlider: React.FC = () => {
                                                         onChange={(e) => {
                                                             const newPlayed = parseFloat(e.target.value);
                                                             setPlayed(newPlayed);
-                                                            console.log(234234);
+
+                                                            console.log(newPlayed);
+                                                            
                                                             
                                                         }}
                                                         onMouseUp={() => {
