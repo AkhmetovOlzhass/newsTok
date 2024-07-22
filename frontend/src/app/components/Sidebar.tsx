@@ -59,9 +59,9 @@ const Sidebar = () => {
                             <span className="ml-2">Образование</span>
                         </a>
                     </div>
-                    {/* <div className="text-left mt-5">
-                        <p className="text-gray-400">Войдите, ставить лайки видео и читать комментарии.</p>
-                        <button className="mt-5 transition-all bg-[#213a39] text-white px-4 py-2 rounded hover:bg-[#1e2e2d]">Войти</button>
+                    {/* <div className="text-left mt-10">
+                        <p className="text-gray-400 leading-tight">Войдите, ставить лайки видео и читать комментарии.</p>
+                        <button className="mt-5 w-full border-[#fff] border-2  transition-all bg-[#282828] text-white px-4 py-2 rounded hover:bg-[#393939]">Войти</button>
                     </div> */}
                 </div>
             </div>

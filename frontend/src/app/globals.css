@@ -53,3 +53,25 @@ header svg{
         display: none;
     }
 }
+
+.player-wrapper {
+    position: relative;
+    width: 640px; /* Вы можете установить свои размеры */
+    height: 360px;
+}
+
+.controls {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    z-index: 1;
+}
+
+.controls button {
+    padding: 10px;
+    font-size: 16px;
+    color: white;
+    background: rgba(0, 0, 0, 0.5);
+    border: none;
+    cursor: pointer;
+}

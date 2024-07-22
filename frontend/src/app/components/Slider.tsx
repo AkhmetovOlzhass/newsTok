@@ -18,6 +18,13 @@ const VerticalSlider: React.FC = () => {
     const firstLoad = useRef(true);
     const [preloadedIndexes, setPreloadedIndexes] = useState<Set<number>>(new Set());
 
+    const [playing, setPlaying] = useState(false);
+    const playerRef = useRef(null);
+
+    const handlePlayPause = () => {
+        setPlaying(!playing);
+    };
+
     const { filter } = useFilter();
 
     useEffect(() => {
@@ -47,7 +54,6 @@ const VerticalSlider: React.FC = () => {
     }, [activeIndex]);
 
     useEffect(() => {
-        // Reset the state when the filter changes
         setPage(1);
         setVideos([]);
         videosRef.current = [];
@@ -93,14 +99,22 @@ const VerticalSlider: React.FC = () => {
                                 <div className=" h-[600px] w-[337.5px] rounded-2xl overflow-hidden relative">
                                     <div className="relative z-10 w-full h-full  mx-auto">
                                         {preloadedIndexes.has(index) ? (
-                                            <ReactPlayer
-                                                loop={true}
-                                                url={video.link}
-                                                playing={index === activeIndex}
-                                                controls={true}
-                                                width="auto"
-                                                height="100%"
-                                            />
+                                            <div className="player-wrapper">
+                                                <ReactPlayer
+                                                    loop={true}
+                                                    url={video.link}
+                                                    playing={index === activeIndex}
+                                                    controls={true}
+                                                    width="auto"
+                                                    height="100%"
+                                                    className="react-player"
+                                                />
+                                                <div className="controls">
+                                                    <button onClick={handlePlayPause}>
+                                                        {playing ? 'Pause' : 'Play'}
+                                                    </button>
+                                                </div>
+                                            </div>
                                         ) : null}
                                     </div>
                                 </div>
