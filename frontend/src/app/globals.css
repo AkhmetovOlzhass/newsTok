@@ -65,10 +65,16 @@ input[type="range"] {
     -webkit-appearance: none;  /* Убираем стандартный стиль для Chrome */
     appearance: none;
     width: 100%; /* Полная ширина контейнера */
-    height: 1px; /* Тонкий ползунок */
+    height: 2px; /* Тонкий ползунок */
     outline: none; /* Убираем контур */
     transition: opacity .2s ease-in-out;
     background-color: rgba(255, 255, 255, 0.34);
+    border-radius: 4px;
+}
+
+input[type="range"]:hover{
+    height: 4px; 
+    border-radius: 0;
 }
 
 input[type="range"]:hover::-webkit-slider-thumb{
