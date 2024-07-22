@@ -74,12 +74,14 @@ const VerticalSlider: React.FC = () => {
             setPage(prevPage => prevPage + 1);
         }
 
+        setPlaying(true)
+
         if(splide.index == 0){
             setPlaying(false)
             console.log(splide.index);
         }
 
-        setPlaying(true)
+        
     };
 
     return (
