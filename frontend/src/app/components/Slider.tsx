@@ -29,10 +29,13 @@ const VerticalSlider: React.FC = () => {
 
         setPlaying(!playing)
     };
-    const handleProgress = (state: { played: React.SetStateAction<number>; }) => {
-        setPlayed(state.played)
+    const handleProgress = (index: number) => (state: { played: number }) => {
+        if (index === activeIndex) {
+            setPlayed(state.played);
+            console.log("Progress: " + state.played);
+        }
         
-        console.log("Progress: " + state.played);
+
         
     };
 
@@ -141,7 +144,7 @@ const VerticalSlider: React.FC = () => {
                                                     loop={true}
                                                     url={video.link}
                                                     playing={index === activeIndex && playing}
-                                                    onProgress={handleProgress}
+                                                    onProgress={handleProgress(index)}
                                                     controls={false}
                                                     width="auto"
                                                     height="100%"
