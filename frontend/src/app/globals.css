@@ -133,4 +133,5 @@ input[type="range"]::-ms-thumb {
 .controls input[type="range"] {
     width: 260px;
     cursor: pointer;
+    padding: 10px 0;
 }

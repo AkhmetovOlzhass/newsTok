@@ -32,7 +32,6 @@ const VerticalSlider: React.FC = () => {
     const handleProgress = (index: number) => (state: { played: number }) => {
         if (index === activeIndex) {
             setPlayed(state.played);
-            console.log("Progress: " + state.played);
         }
         
 
@@ -83,18 +82,12 @@ const VerticalSlider: React.FC = () => {
         setPlaying(true)
         setPlayed(0)
 
-        console.log("handleMoved: " + played);
 
         if(splide.index == 0){
             setPlaying(false)
         }
 
     };
-
-    useEffect(() => {
-        console.log(played);
-        
-    }, [played])
 
     useEffect(() => {
         // Обновляем массив рефов при изменении количества видео
@@ -168,7 +161,6 @@ const VerticalSlider: React.FC = () => {
                                                         onChange={(e) => {
                                                             const newPlayed = parseFloat(e.target.value);
                                                             setPlayed(newPlayed);
-                                                            console.log("onChange: " + newPlayed);
                                                             // Обращаемся к текущему активному видео для выполнения перемотки
                                                             const currentPlayer = playerRefs.current[activeIndex]?.current;
                                                             if (currentPlayer) {
