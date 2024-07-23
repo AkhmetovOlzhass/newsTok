@@ -31,10 +31,10 @@ const VerticalSlider: React.FC = () => {
 
         setPlaying(!playing)
     };
-    const handleVolumeChange = (e: { target: { value: string; }; }) => setVolume(parseFloat(e.target.value));
     const handleProgress = (state: { played: React.SetStateAction<number>; }) => {
-        setPlayed(state.played)
-        console.log(state.played);
+        if (playerRefs.current[activeIndex]?.current && playing) {
+            setPlayed(state.played);
+        }
         
     };
 
@@ -133,6 +133,7 @@ const VerticalSlider: React.FC = () => {
                                         {preloadedIndexes.has(index) ? (
                                             <div className="player-wrapper">
                                                 <ReactPlayer
+                                                    key={video.link}
                                                     loop={true}
                                                     url={video.link}
                                                     // playing={index === activeIndex}
