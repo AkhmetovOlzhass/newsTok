@@ -32,9 +32,7 @@ const VerticalSlider: React.FC = () => {
         setPlaying(!playing)
     };
     const handleProgress = (state: { played: React.SetStateAction<number>; }) => {
-        if (playerRefs.current[activeIndex]?.current && playing) {
-            setPlayed(state.played);
-        }
+        setPlayed(state.played)
         
     };
 
