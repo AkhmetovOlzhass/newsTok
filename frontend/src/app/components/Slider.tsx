@@ -82,8 +82,12 @@ const VerticalSlider: React.FC = () => {
             setPlaying(false)
         }
 
-        handleProgress({played: 0})
     };
+
+    useEffect(() => {
+        console.log(played);
+        
+    }, [played])
 
     useEffect(() => {
         // Обновляем массив рефов при изменении количества видео
