@@ -32,6 +32,8 @@ const VerticalSlider: React.FC = () => {
     const handleProgress = (state: { played: React.SetStateAction<number>; }) => {
         setPlayed(state.played)
         
+        console.log("Progress: " + state.played);
+        
     };
 
     const { filter } = useFilter();
@@ -77,6 +79,8 @@ const VerticalSlider: React.FC = () => {
 
         setPlaying(true)
         setPlayed(0)
+
+        console.log("handleMoved: " + played);
 
         if(splide.index == 0){
             setPlaying(false)
@@ -161,6 +165,7 @@ const VerticalSlider: React.FC = () => {
                                                         onChange={(e) => {
                                                             const newPlayed = parseFloat(e.target.value);
                                                             setPlayed(newPlayed);
+                                                            console.log("onChange: " + newPlayed);
                                                             // Обращаемся к текущему активному видео для выполнения перемотки
                                                             const currentPlayer = playerRefs.current[activeIndex]?.current;
                                                             if (currentPlayer) {
