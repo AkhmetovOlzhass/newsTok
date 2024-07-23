@@ -20,6 +20,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <head>
+      <meta name="google-site-verification" content="Be3TIDKqeHDNV9gpckmklxJk607G9jIWb_74KVE5sas" />
+      </head>
       <body className={inter.className}>
         
         <div className="h-screen">
