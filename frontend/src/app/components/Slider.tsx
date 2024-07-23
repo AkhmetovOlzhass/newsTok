@@ -133,7 +133,9 @@ const VerticalSlider: React.FC = () => {
                                         {preloadedIndexes.has(index) ? (
                                             <div className="player-wrapper">
                                                 <div
+                                                className=' relative'
                                                 onClick={handlePlayPause} >
+                                                    {playing ? null : <svg xmlns="http://www.w3.org/2000/svg" width="70" height="70" fill="#fff" data-e2e="browse-video-play" className="player-pause"><use xlinkHref="#Play_Fill-3364e33a"></use></svg>}
                                                     <ReactPlayer
                                                         key={video.link}
                                                         loop={true}
