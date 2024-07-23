@@ -61,7 +61,7 @@ const Header = () => {
                             </defs>
                         </svg>
 
-                        <button className=" transition-all bg-[#213a39] text-white px-4 py-2 rounded hover:bg-[#1e2e2d]">Войти</button>
+                        {/* <button className=" transition-all bg-[#213a39] text-white px-4 py-2 rounded hover:bg-[#1e2e2d]">Войти</button> */}
 
                         <BurgerMenu onClick={toggleSidebar} />
                     </div>
