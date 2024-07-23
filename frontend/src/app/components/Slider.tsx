@@ -19,9 +19,7 @@ const VerticalSlider: React.FC = () => {
     const [preloadedIndexes, setPreloadedIndexes] = useState<Set<number>>(new Set());
 
     const [playing, setPlaying] = useState(false);
-    const playerRef = useRef<ReactPlayer | null>(null);
     const playerRefs = useRef(videos.map(() => createRef<ReactPlayer>()));
-    const [volume, setVolume] = useState(0.8);
     const [played, setPlayed] = useState(0);
 
     const handlePlayPause = () => {
@@ -84,7 +82,7 @@ const VerticalSlider: React.FC = () => {
             setPlaying(false)
         }
 
-        
+        handleProgress({played: 0})
     };
 
     useEffect(() => {
@@ -93,7 +91,7 @@ const VerticalSlider: React.FC = () => {
     }, [videos.length]);
 
     const handleRangeStyle = (value: number) => {
-        const percentage = (value * 100).toFixed(2); // Преобразуем текущее значение в проценты
+        const percentage = (value * 100).toFixed(2);
         return `linear-gradient(90deg, white ${percentage}%, rgba(255, 255, 255, 0.34) ${percentage}%)`;
     };
 
@@ -134,13 +132,12 @@ const VerticalSlider: React.FC = () => {
                                                     key={video.link}
                                                     loop={true}
                                                     url={video.link}
-                                                    // playing={index === activeIndex}
                                                     playing={index === activeIndex && playing}
-                                                    volume={volume}
                                                     onProgress={handleProgress}
                                                     controls={false}
                                                     width="auto"
                                                     height="100%"
+                                                    volume={0.8}
                                                     className="react-player"
                                                     ref={playerRefs.current[index]}
                                                     onClick={handlePlayPause}
