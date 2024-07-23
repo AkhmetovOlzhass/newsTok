@@ -65,7 +65,7 @@ input[type="range"] {
     -webkit-appearance: none;  /* Убираем стандартный стиль для Chrome */
     appearance: none;
     width: 100%; /* Полная ширина контейнера */
-    height: 2px; /* Тонкий ползунок */
+    height: 4px; /* Тонкий ползунок */
     outline: none; /* Убираем контур */
     transition: opacity .2s ease-in-out;
     background-color: rgba(255, 255, 255, 0.34);
