@@ -130,17 +130,7 @@ input[type="range"]::-ms-thumb {
     padding: 10px;
 }
 
-input[type="range"] {
-    -webkit-appearance: none; /* Убирает стандартный стиль для Chrome */
-    margin: 10px 0; /* Добавляет место для легкости нажатия */
-    padding: 10px 0; /* Увеличивает кликабельную область, но остается прозрачной */
-    height: 2px; /* Высота активной дорожки */
-    background: transparent; /* Поддерживает фон страницы */
-    outline: none;
+.controls input[type="range"] {
     width: 260px;
     cursor: pointer;
-}
-
-input[type="range"]:focus {
-    outline: none; /* Убирает контур при фокусировке */
 }
