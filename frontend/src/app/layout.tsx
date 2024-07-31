@@ -28,9 +28,9 @@ export default function RootLayout({
         <div className="h-screen">
             <FilterProvider>
                 <Header/>
-              <Sidebar/>
-              {children}
-              <Analytics />
+                <Sidebar/>
+                {children}
+                <Analytics />
             </FilterProvider>
         </div>
       </body>
