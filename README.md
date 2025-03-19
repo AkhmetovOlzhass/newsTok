@@ -20,7 +20,7 @@ newsTok is an AI-driven platform that **automatically converts news articles int
 ✅ **Intelligent news summarization** with Gemini & ChatGPT APIs  
 
 ## 🔗 Links
-📜 nFactorial Incubator: [nfactorial.school](http://incubator.nfactorial.school/)
-📜 Tengrinews: tengrinews.kz
+📜 **nFactorial Incubator**: [nfactorial.school](http://incubator.nfactorial.school/)  
+📜 **Tengrinews**: [tengrinews.kz](https://tengrinews.kz/)  
 
 🚀 Development is ongoing privately under Tengrinews!
